@@ -23,15 +23,17 @@ Clients or server implementations of this API will choose to use generate stubs 
 
 For example, using the 
 ```shell
-openapi-generator-cli generate -i [URL_OF_YOUR_SWAGGER_SPEC] -g spring -o service_output_dir
-
+openapi-generator-cli generate \
+  -i https://raw.githubusercontent.com/aaronp/calc-api/main/v1/service.yaml \
+  -g spring \
+  -o path/to/output_dir
 ```
 
 Or as a zero-install dockerised version:
 ```bash
-docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
-    -i /local/path_to_your_openapi.yaml \
+docker run --rm \
+    -v ${PWD}:/local openapitools/openapi-generator-cli generate \
+    -i https://raw.githubusercontent.com/aaronp/calc-api/main/v1/service.yaml \
     -g spring \
-    -o service_output_dir
-
+    -o /local/path/to/output_dir
 ```
