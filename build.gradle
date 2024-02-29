@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'org.openapi.generator' version '5.3.0'
+}
+
+group 'com.github.aaronp'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+openApiGenerate {
+    generatorName = 'spring' // You can change this depending on the framework you want to use
+    inputSpec = "v1/$rootDir/service.yaml".toString()
+    outputDir = "$buildDir/generated".toString()
+    apiPackage = 'aaronp.calc.api'
+    modelPackage = 'aaronp.calc.model'
+    invokerPackage = 'aaronp.calc.invoker'
+    configOptions = [
+        dateLibrary: 'java8'   // Use Java 8 date types
+    ]
+}
+
+compileJava.dependsOn 'openApiGenerate'
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            srcDir "$buildDir/generated/src/main/java"
+        }
+    }
+}

@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: Basic Calculator Service
+  version: 1.0.0
+  description: A simple calculator API that performs basic arithmetic operations.
+paths:
+  /v1/calc:
+    post:
+      summary: Perform arithmetic operation
+      description: |
+        Performs a basic arithmetic operation (add, subtract, divide, multiply) 
+        on two provided numbers.
+      operationId: calculate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - lhs
+                - operator
+                - rhs
+              properties:
+                lhs:
+                  type: number
+                  description: Left hand side operand.
+                operator:
+                  type: string
+                  enum:
+                    - add
+                    - subtract
+                    - divide
+                    - multiply
+                  description: Arithmetic operator.
+                rhs:
+                  type: number
+                  description: Right hand side operand.
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: number
+                    description: Result of the arithmetic operation.
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message describing the invalid input.
+        '500':
+          description: Internal Server Error
+components:
+  schemas: {}
