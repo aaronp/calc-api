@@ -23,7 +23,7 @@ This section maintains a list of projects which either implement or consume this
 
 If you do not see your project here, please open a pull-request to [this README.md](./README.md) to have your project added.
 
-### Implementatinos
+### Implementations
 
  * [calc-api-service](https://github.com/aaronp/calc-api-service)
 
