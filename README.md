@@ -17,6 +17,16 @@ This library would follow semantic versioning in its repository tags.
 
 New major versions (e.g. version incompatible changes) will be created by adding new services under the `v1`, `v2`, `v3` subdirectories in this repository.
 
+## Related Projects
+
+This section maintains a list of projects which either implement or consume this API.
+
+If you do not see your project here, please open a pull-request to [this README.md](./README.md) to have your project added.
+
+### Implementatinos
+
+ * [calc-api-service](https://github.com/aaronp/calc-api-service)
+
 ## Building
 
 Clients or server implementations of this API will choose to use generate stubs based on the service definitions by using the URL of the appropriate service.
