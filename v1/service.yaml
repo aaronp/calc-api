@@ -4,6 +4,36 @@ info:
   version: 1.0.0
   description: A simple calculator API that performs basic arithmetic operations.
 paths:
+  /v1/add/{x}/{y}:
+    get:
+      summary: Add two numbers
+      description: Returns the sum of two numbers.
+      parameters:
+        - name: x
+          in: path
+          required: true
+          description: First number to add
+          schema:
+            type: number
+        - name: y
+          in: path
+          required: true
+          description: Second number to add
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: number
+                    example: 3
+        '400':
+          description: Invalid input
   /v1/calc:
     post:
       summary: Perform arithmetic operation
