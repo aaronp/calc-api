@@ -1,8 +1,6 @@
 #!/usr/bin/env scala-cli
 
-println("hi")
-
-val all = """  - java-camel
+val all = """- java-camel
     - java-helidon-server (beta)
     - java-inflector
     - java-micronaut-server (beta)
@@ -27,3 +25,7 @@ val all = """  - java-camel
     - scala-play-server
     - scalatra
     - spring"""
+
+all.lines.collect {
+    case s".*- ($name)" => name
+}.foreach(println)
