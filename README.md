@@ -2,20 +2,18 @@
 
 This project was created as an example of a 'contract-first' approach to developing REST services.
 
-The idea is that there is a repository (This repository) which simply containts:
+The idea is that there is a repository (This repository) which simply contains:
 
-* the OpenAPI contract in [service.yaml](./service.yaml)
-* basic convenience build steps which can
-    * perform basic validation that the service syntax is valid
-    * build stub artefacts for other services to consume
- * the governance for evolving the contract
+* the OpenAPI contract in [v1/service.yaml](./v1/service.yaml)
 
 Providers and consumers of this API contract can be added to this repo and participate in the evolution of the API.
 
-## Verioning
-This library would follow semantic versioning in its repository tags.
+## Versioning
+This library follows semantic versioning in its repository tags.
 
-New major versions (e.g. version incompatible changes) will be created by adding new services under the `v1`, `v2`, `v3` subdirectories in this repository.
+New major versions (e.g. version incompatible changes) are created by adding new services under the `v1`, `v2`, `v3` subdirectories in this repository.
+
+This way existing implementations and clients will be unaffected by targeting the appropriate major version directory of the main branch. 
 
 ## Related Projects
 
@@ -27,6 +25,18 @@ If you do not see your project here, please open a pull-request to [this README.
 
  * [calc-api-service](https://github.com/aaronp/calc-api-service)
 
+## Stubs
+For convenience, this repository publishes common stubs for the service and client implementations.
+
+Or at least, that would be the intent. In this example, we actually just checked in the result of running an openapi-generator into the [server-generated/v1](./server-generated/v1).
+
+Also, instead of going to the effort of publishing to e.g. maven central, we "fake it" but just publishing locally by running:
+```bash
+./build.sh
+```
+
+Once published locally, the server implementation project (e.g. [calc-api-service](https://github.com/aaronp/calc-api-service)) can be built
+
 ## Building
 
 Clients or server implementations of this API will choose to use generate stubs based on the service definitions by using the URL of the appropriate service.
@@ -35,7 +45,7 @@ For example, using the
 ```shell
 openapi-generator-cli generate \
   -i https://raw.githubusercontent.com/aaronp/calc-api/main/v1/service.yaml \
-  -g spring \
+  -g scala-cask \
   -o path/to/output_dir
 ```
 
@@ -44,7 +54,7 @@ Or as a zero-install dockerised version:
 docker run --rm \
     -v ${PWD}:/local openapitools/openapi-generator-cli generate \
     -i https://raw.githubusercontent.com/aaronp/calc-api/main/v1/service.yaml \
-    -g spring \
+    -g scala-cask \
     -o /local/path/to/output_dir
 ```
 

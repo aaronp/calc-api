@@ -1,0 +1,93 @@
+{
+  "openapi" : "3.1.0",
+  "info" : {
+    "description" : "A simple calculator API that performs basic arithmetic operations.",
+    "title" : "Basic Calculator Service",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:8080/"
+  } ],
+  "paths" : {
+    "/v1/calc" : {
+      "post" : {
+        "description" : "Performs a basic arithmetic operation (add, subtract, divide, multiply) \non two provided numbers.\n",
+        "operationId" : "calculate",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/calculate_request"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/calculate_200_response"
+                }
+              }
+            },
+            "description" : "Successful operation"
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/calculate_400_response"
+                }
+              }
+            },
+            "description" : "Invalid input"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "summary" : "Perform arithmetic operation"
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "calculate_request" : {
+        "properties" : {
+          "lhs" : {
+            "description" : "Left hand side operand.",
+            "type" : "number"
+          },
+          "operator" : {
+            "description" : "Arithmetic operator.",
+            "enum" : [ "add", "subtract", "divide", "multiply" ],
+            "type" : "string"
+          },
+          "rhs" : {
+            "description" : "Right hand side operand.",
+            "type" : "number"
+          }
+        },
+        "required" : [ "lhs", "operator", "rhs" ]
+      },
+      "calculate_200_response" : {
+        "properties" : {
+          "result" : {
+            "description" : "Result of the arithmetic operation.",
+            "type" : "number"
+          }
+        }
+      },
+      "calculate_400_response" : {
+        "properties" : {
+          "message" : {
+            "description" : "Error message describing the invalid input.",
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
