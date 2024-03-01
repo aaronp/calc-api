@@ -47,3 +47,8 @@ docker run --rm \
     -g spring \
     -o /local/path/to/output_dir
 ```
+
+To list other options (e.g. beyond `-g spring`), use this:
+```bash
+docker run --rm openapitools/openapi-generator-cli list
+```

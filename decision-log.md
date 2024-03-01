@@ -30,7 +30,7 @@ In the course of a micro-services project, we want to:
 
 The decision of REST vs grpc, websockets, graphQL, etc are out-of-scope. This decision assumes we're using REST, and the best approach for contract-first REST contracts
 
-### > Criteria: How will we evaluate
+### > Criteria: How will we evaluate our options?
 
 What will we use to compare one solution against another?
 Cost? Time? Effort? Impact? Support? Learning Curve? Risk?
@@ -38,7 +38,7 @@ Cost? Time? Effort? Impact? Support? Learning Curve? Risk?
 Tip: You may alread have some ideas for solutions in mind which you'd like to try.
 Try to reverse engineer that thought. What is it about that which you like? Why?
 
-### Options
+### > Options Considered
 
 List any options here with a short name or number.
 
@@ -46,7 +46,7 @@ What are the pros/cons? If these are too detailed, perhaps link to other documen
 
 e.g.
 
-#### Option 1: Fizz the Buzz
+#### Option 1: ....
 
 We should fizz the buzz.
 
