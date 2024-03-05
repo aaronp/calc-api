@@ -51,7 +51,7 @@ def exec(cmd: String) = {
     
 }
 
-all.linesIterator.map(_.trim).collect {
+all.linesIterator.map(_.trim).filter(_.contains("micronaut")).collect {
     case s"- $name" => name
 }.map(asCmd).foreach(exec)
 
